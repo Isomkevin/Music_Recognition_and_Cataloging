@@ -1,4 +1,4 @@
-### Title: Music Recognition and Metadata Cataloging using eyed3 & Shazam
+## Music Recognition and Song Cataloging using *eyed3 & Shazam*
 
 #### Description:
 This Python script utilizes the Shazam API for music recognition and cataloging metadata of songs. It takes a music file as input, recognizes the song using Shazam, extracts required song information, edits the music file's metadata, and prints the metadata information. The script is designed to be asynchronous, leveraging asyncio for concurrent operations.
