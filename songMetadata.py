@@ -20,6 +20,7 @@ def get_music_metadata(track):
   }
   return audio_data
 
+
 def renameSongTrack(filePath):
   """
   Rename a music file based on its metadata.
@@ -36,12 +37,13 @@ def renameSongTrack(filePath):
   Note:
   - The function assumes that the audio file is in MP3 format.
   """
-  
+
   # Load metadata from the audio file
   audiofile = eyed3.load(filePath)
   new_filename = f"{audiofile.tag.title} - {audiofile.tag.artist}.mp3"
   os.rename(filePath, new_filename)
-  
+
+
 def editMusicTag(parameters, file_path):
   """
   Edit the tags of a music file specified by the file path using the provided
