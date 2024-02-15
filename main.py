@@ -19,11 +19,13 @@ async def main(musicFile):
   out = await shazam.recognize_song(musicFile)
   song_info = get_required_song_info(out)
   editMusicTag(song_info, musicFile)
-  print(f"{musicFile} Catalouged!!/n")
-  print(get_music_metadata(musicFile))
+  print(f"{musicFile} Catalouged!!\n\n")
+  # print(get_music_metadata(musicFile))
+
 
 
 if __name__ == '__main__':
-  musicTrack = u'music_folder/Bebe Rexha - Sacrifice [Official Music Video].mp3'
+  musicFolder = u'test/music_folder'
+  musicTrack = f'{musicFolder}/Jack Harlow - Lovin On Me [Official Music Video] (320 kbps).mp3'
   loop = asyncio.get_event_loop()
   loop.run_until_complete(main(musicTrack))

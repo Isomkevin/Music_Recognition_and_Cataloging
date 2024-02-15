@@ -62,8 +62,9 @@ def get_required_song_info(shazamData, song_metadata=required_song_info):
 
   Args:
       song_metadata (dict): A dictionary containing metadata mappings for the song.
-                            Keys represent the desired information (e.g.,'title','artist'),
-                            and values represent the corresponding paths in the Shazam data.
+                            Keys represent the desired information
+                            (e.g.,'title','artist') and values represent the
+                            corresponding paths in the Shazam data.
       shazamData (dict): The Shazam data containing information about the
       song.
 

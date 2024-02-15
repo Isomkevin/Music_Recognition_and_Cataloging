@@ -16,12 +16,12 @@ def get_music_metadata(track):
       "Album": audio.tag.album,
       "Publisher": audio.tag.publisher,
       "Genre": f"{get_genre()}",
-      "Release_date": audio.tag.release_date
+      # "Release_date": help(audio.tag.release_date)  
   }
   return audio_data
 
 
-def renameSongTrack(filePath):
+def renameSongTrack(filePath, newFolder=u'test/music_folder'):
   """
   Rename a music file based on its metadata.
 
@@ -41,7 +41,9 @@ def renameSongTrack(filePath):
   # Load metadata from the audio file
   audiofile = eyed3.load(filePath)
   new_filename = f"{audiofile.tag.title} - {audiofile.tag.artist}.mp3"
-  os.rename(filePath, new_filename)
+  os.rename(filePath, f"{newFolder}/{new_filename}")
+  
+  return new_filename
 
 
 def editMusicTag(parameters, file_path):
@@ -66,6 +68,7 @@ def editMusicTag(parameters, file_path):
   audio_file = eyed3.load(file_path)
   if not audio_file.tag:
     audio_file.initTag()
+    
   if parameters['trackTitle']:
     audio_file.tag.title = parameters['trackTitle']
   if parameters['trackArtist']:
@@ -74,12 +77,20 @@ def editMusicTag(parameters, file_path):
     audio_file.tag.album = parameters['Album']
   if parameters['Label']:
     audio_file.tag.publisher = parameters['Label']
-  if parameters['Released']:
-    audio_file.tag.release_date = parameters['Released']
+  
+    
+  # ***Having issues implenting this***
+# if parameters['Released']:
+    #year = parameters['Released']
+    #released_year = eyed3.core.Date(int(year))
+    #audio_file.tag.release_date = released_year
 
   audio_file.tag.save()
+  newFilename = renameSongTrack(file_path)
+  
+  return newFilename
 
 
 if __name__ == '__main__':
-  musicTrack = 'The Chainsmokers - Side Effects (Official Video) ft. Emily Warren.mp3'
+  musicTrack = u'music_folder/The Chainsmokers - Side Effects (Official Video) ft. Emily Warren.mp3'
   print(get_music_metadata(musicTrack))
